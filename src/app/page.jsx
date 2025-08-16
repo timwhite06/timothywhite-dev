@@ -1,4 +1,4 @@
-import VideoComponent from '@/app/components/Player/video_ssr';
+import VideoComponent from '@/app/components/Player/video_and_fallback';
 import MaxWidthWrapper from '@/app/components/Wrappers/max_width_wrapper';
 import SkillCard from '@/app/components/Cards/skill_card';
 import {
@@ -6,78 +6,13 @@ import {
   NextJsIcon,
   ThreeJsIcon
 } from '@/app/components/Icons/index';
-import ProjectCard from './components/Cards/project_card';
 import Link from 'next/link';
 import Image from 'next/image';
-import { SiNx } from 'react-icons/si';
-import { FaVuejs } from 'react-icons/fa';
 import { TbBrandTypescript } from 'react-icons/tb';
 import { IoLogoElectron } from 'react-icons/io5';
 import { generateSignedUrl } from '@/utils/generate_signed_url';
 import { RiJavascriptLine } from 'react-icons/ri';
 import { RiTailwindCssFill } from 'react-icons/ri';
-
-// List of all projects
-const projects = [
-  {
-    key: 'vue-js-sorting-algo-app',
-    title: 'Vue JS Sorting Algorithm Visualiser',
-    description:
-      'A sorting algorithm visualiser built using Vue.js. It allows users to visualise various sorting algorithms in action.',
-    image: '/images/sorting.png',
-    link: 'https://timwhite06-vuejs-sorting-algorithms.netlify.app/',
-    bgColor: 'bg-gray-100',
-    icon: (
-      <div className="text-5xl">
-        <FaVuejs />
-      </div>
-    )
-  },
-  {
-    key: 'weather-app',
-    title: 'Weather App',
-    description:
-      'Uses Visual Crossings free weather API to display the current weather for a given location. Uses NX for monorepo, Next JS, and TypeScript.',
-    image: '/images/weatherlightning.jpg',
-    link: 'https://weather-app-2-kappa-silk.vercel.app/',
-    bgColor: 'bg-gray-100',
-    icon: (
-      <div className="text-5xl">
-        <SiNx />
-      </div>
-    )
-  },
-  {
-    key: 'chess-game',
-    title: 'Chess Game',
-    description:
-      "A chess game built using JavaScript and Rust. Exploring Rust's websocket capabilities and database integration.",
-    image: '/images/chess.jpg',
-    link: 'https://github.com/timwhite06/chess-rust-and-javascript',
-    bgColor: 'bg-gray-100',
-    icon: 'fa-brands fa-rust'
-  },
-  {
-    key: 'portfolio',
-    title: 'Portfolio Website',
-    description:
-      'A personal portfolio website built using Next.js and Tailwind CSS.',
-    image: '/images/setup.jpg',
-    link: 'https://github.com/timwhite06/timothy-white-development',
-    bgColor: 'bg-gray-100',
-    icon: <NextJsIcon />
-  },
-  {
-    key: 'downloader',
-    title: 'YouTube mp4 & mp3 Downloader',
-    description:
-      'A command line application that allows users to download YouTube videos in mp4 and mp3 formats.',
-    image: '/images/youtube_pexel.jpg',
-    link: 'https://github.com/timwhite06/youtube-video-audio-downloader',
-    bgColor: 'bg-gray-100',
-    icon: 'fa-brands fa-python'
-  }
-];
 
 export default function Home() {
   const signedVideoUrl = generateSignedUrl();
@@ -85,24 +20,31 @@ export default function Home() {
   return (
     <div className="flex flex-col mt-[-80px]">
       {/* Video Background */}
-      <div className="min-h-screen flex items-center relative w-full">
+      <div className="h-[90vh] flex items-center relative w-full">
         {/* Background Video */}
-        <div className="video-container relative w-full h-full min-h-screen flex justify-start items-center pointer-events-none">
+        <div className="video-container relative w-full h-full flex justify-start items-center pointer-events-none">
           {/* Video Component */}
           {signedVideoUrl ? (
             <VideoComponent src={signedVideoUrl} type="video/mp4" />
           ) : (
-            <p className="text-red-500">Error loading video</p>
+            <div className="absolute inset-0 w-full h-full">
+              <Image
+                src="/setup.jpg"
+                alt="Developer setup"
+                fill
+                style={{ objectFit: 'cover' }}
+                priority
+                className="z-[-1]"
+              />
+            </div>
           )}
 
           {/* Dark Overlay */}
-          {/* Directly apply opacity to this element */}
           <div className="absolute inset-0 bg-black opacity-80 z-10 pointer-events-none" />
 
           {/* Content */}
           <div className="relative z-20 w-full h-full flex items-center justify-center px-0 sm:px-12">
             <div className="text-white z-30 w-full lg:max-w-[1000px] ml-8 md:ml-12">
-              {/* Adjusted font sizes based on Montserrat recommendations */}
               <h1 className="text-5xl sm:text-7xl lg:text-8xl font-bold">
                 Timothy White
               </h1>
@@ -149,8 +91,8 @@ export default function Home() {
               <Image
                 src="/images/tim.JPG"
                 alt="Profile picture - Timothy White"
-                fill // Use fill without layout
-                style={{ objectFit: 'cover' }} // Update objectFit to be inline style
+                fill
+                style={{ objectFit: 'cover' }}
                 sizes="100%"
               />
             </div>
@@ -162,19 +104,52 @@ export default function Home() {
         <div className="container text-black px-0">
           <h2 className="text-4xl sm:text-5xl font-bold mb-6">Experience</h2>
           <p className="text-lg sm:text-xl mb-4 leading-relaxed">
-            Over the past few years, I’ve worked on a variety of exciting
-            projects, building full-stack solutions for advanced automotive
-            technology and drone systems. Here are some highlights of my
-            professional journey.
+            Over the years, I’ve worked on a variety of exciting projects,
+            building full-stack solutions for advanced automotive technology and
+            drone systems. Here are some highlights of my professional journey.
           </p>
 
           <div className="grid gap-7 grid-flow-row">
             <div className="space-y-6">
-              {/* Continental Engineering Services Experience */}
+              {/* LearningCog */}
               <div className="relative bg-white p-6 rounded-md shadow-md">
                 {/* Badge for Date */}
                 <span className="badge  h-auto max-h-[40px] absolute left-1/2 transform -translate-x-1/2 -top-4 bg-[#22d3ee] text-black font-bold px-6 py-3 rounded-full text-large mt-1 w-[65vw] sm:w-auto">
-                  January 2025 - Present
+                  July 2025 - Present
+                </span>
+
+                {/* Experience Details */}
+                <h3 className="text-2xl sm:text-3xl font-bold mb-2 mt-4">
+                  Mid-Level Software Developer - LearningCog Ltd
+                </h3>
+                <p className="text-md sm:text-lg text-gray-700 mb-2">
+                  Hybrid - Full Time
+                </p>
+
+                {/* First Paragraph */}
+                <ul className="text-lg sm:text-xl mb-4 leading-relaxed list-disc pl-5">
+                  <li>
+                    Building full-stack solutions: one project using Django, and
+                    another using Python FastAPI, React, Flutter, and
+                    PostgreSQL.
+                  </li>
+                  <li>
+                    Working in a small, agile team with technical freedom over
+                    design, architecture, and technology choices.
+                  </li>
+                  <li>
+                    Responsible for project architecture, design, and
+                    implementation.
+                  </li>
+                  <li>Agile project management, including sprint planning.</li>
+                </ul>
+              </div>
+
+              {/* Sycurio Experience */}
+              <div className="relative bg-white p-6 rounded-md shadow-md">
+                {/* Badge for Date */}
+                <span className="badge  h-auto max-h-[40px] absolute left-1/2 transform -translate-x-1/2 -top-4 bg-[#22d3ee] text-black font-bold px-6 py-3 rounded-full text-large mt-1 w-[65vw] sm:w-auto">
+                  January 2025 - July 2025
                 </span>
 
                 {/* Experience Details */}
@@ -277,31 +252,6 @@ export default function Home() {
 
           {/* Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-            {/* Preparation for skill tree */}
-            {/* <SkillCard
-              title="Front End"
-              icon="fa-brands fa-react"
-              link="https://reactjs.org"
-            >
-              Discover my expertise in frontend development, including
-              JavaScript, TypeScript, and React.js.
-            </SkillCard>
-            <SkillCard
-              title="Backend"
-              icon="fa-brands fa-react"
-              link="https://reactjs.org"
-            >
-              Discover my expertise in backend development, including Python,
-              Node.js, and Next.js.
-            </SkillCard>
-            <SkillCard
-              title="Databases"
-              icon="fa-brands fa-react"
-              link="https://reactjs.org"
-            >
-              Discover my expertise in databases, including NoSQL and SQL.
-            </SkillCard> */}
-
             <SkillCard
               title="JavaScript"
               experienceStartYear={2021}
@@ -471,40 +421,6 @@ export default function Home() {
               Currently reading the documentation to learn the fundamentals of
               Go programming.
             </SkillCard>
-          </div>
-        </div>
-      </MaxWidthWrapper>
-
-      {/* Portfolio / Projects Section */}
-      <MaxWidthWrapper bgColor="bg-gray-100">
-        <div className="container text-black px-0">
-          <h2 className="text-4xl sm:text-5xl font-bold mb-6">Projects</h2>
-          <p className="text-lg sm:text-xl mb-4 leading-relaxed">
-            Here are some of the key projects I&apos;ve worked on recently.
-          </p>
-          {/* List projects with links to GitHub, live demos, etc. */}
-
-          {/* Project Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {projects.map((project, index) => (
-              <div
-                key={project.key}
-                className={`${
-                  projects.length % 2 !== 0 && index === projects.length - 1
-                    ? 'md:col-span-2'
-                    : ''
-                }`}
-              >
-                <ProjectCard
-                  title={project.title}
-                  description={project.description}
-                  image={project.image}
-                  link={project.link}
-                  bgColor={project.bgColor}
-                  icon={project.icon}
-                />
-              </div>
-            ))}
           </div>
         </div>
       </MaxWidthWrapper>
