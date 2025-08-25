@@ -1,10 +1,9 @@
-import PropTypes from "prop-types";
 import Link from "next/link";
+import { SkillCardProps } from "@/app/types/home_page";
 
-// Function to calculate years of experience based on start and end years
-function getYearsOfExperience(startYear, endYear) {
+function getYearsOfExperience(startYear: number, endYear?: number): number {
   const currentYear = new Date().getFullYear();
-  if (endYear) {
+  if (endYear !== undefined && endYear !== null) {
     return endYear - startYear;
   }
   return currentYear - startYear;
@@ -17,7 +16,7 @@ const SkillCard = ({
   experienceEndYear,
   children,
   link,
-}) => {
+}: SkillCardProps) => {
   const isSvg = typeof icon === "object";
 
   const isYearValid =
@@ -54,15 +53,6 @@ const SkillCard = ({
       </div>
     </Link>
   );
-};
-
-SkillCard.propTypes = {
-  title: PropTypes.string.isRequired,
-  experienceStartYear: PropTypes.number.isRequired, // Starting year of experience
-  experienceEndYear: PropTypes.number, // Optional ending year of experience
-  icon: PropTypes.oneOfType([PropTypes.string, PropTypes.element]).isRequired,
-  children: PropTypes.node.isRequired,
-  link: PropTypes.string.isRequired,
 };
 
 export default SkillCard;

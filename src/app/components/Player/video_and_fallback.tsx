@@ -1,29 +1,36 @@
-'use client';
-import { useState, useEffect, useRef } from 'react';
-import Image from 'next/image';
+"use client";
+import { useState, useEffect, useRef } from "react";
+import Image from "next/image";
 
-export default function VideoComponent({ src, type, captionsSrc }) {
-  const [videoError, setVideoError] = useState(false);
-  const videoRef = useRef(null);
+type VideoComponentProps = {
+  src: string;
+  type?: string;
+  captionsSrc?: string;
+};
+
+export default function VideoComponent({
+  src,
+  type,
+  captionsSrc,
+}: VideoComponentProps) {
+  const [videoError, setVideoError] = useState<boolean>(false);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
 
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
 
     const handleError = () => {
-      console.error('Video failed to load');
       setVideoError(true);
     };
 
     const handleCanPlay = () => {
-      // Video is ready to play
       setVideoError(false);
     };
 
-    video.addEventListener('error', handleError);
-    video.addEventListener('canplay', handleCanPlay);
+    video.addEventListener("error", handleError);
+    video.addEventListener("canplay", handleCanPlay);
 
-    // Timeout to detect if video takes too long to load
     const timeoutId = setTimeout(() => {
       if (video.readyState === 0) {
         setVideoError(true);
@@ -31,8 +38,8 @@ export default function VideoComponent({ src, type, captionsSrc }) {
     }, 5000);
 
     return () => {
-      video.removeEventListener('error', handleError);
-      video.removeEventListener('canplay', handleCanPlay);
+      video.removeEventListener("error", handleError);
+      video.removeEventListener("canplay", handleCanPlay);
       clearTimeout(timeoutId);
     };
   }, [src]);
@@ -44,7 +51,7 @@ export default function VideoComponent({ src, type, captionsSrc }) {
           src="/images/setup.jpg"
           alt="Developer setup"
           fill
-          style={{ objectFit: 'cover' }}
+          style={{ objectFit: "cover" }}
           priority
           className="z-[-1]"
         />
@@ -55,8 +62,6 @@ export default function VideoComponent({ src, type, captionsSrc }) {
   return (
     <video
       ref={videoRef}
-      src={src}
-      type={type}
       autoPlay
       muted
       loop
@@ -66,6 +71,8 @@ export default function VideoComponent({ src, type, captionsSrc }) {
       className="absolute inset-0 w-full h-full object-cover z-[-1]"
       aria-label="Video player landing page video"
     >
+      <source src={src} type={type} />
+      {captionsSrc ? <track src={captionsSrc} kind="captions" /> : null}
       Your browser does not support the video tag.
     </video>
   );

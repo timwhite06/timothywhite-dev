@@ -1,13 +1,22 @@
-// MaxWidthWrapper Component
 import MaxWidthWrapper from "@/app/components/Wrappers/max_width_wrapper";
 import { FaVuejs } from "react-icons/fa";
 import { SiNx } from "react-icons/si";
-import { NextJsIcon } from "@/app/components/Icons";
+import { NextJsIcon } from "@/app/components/Icons/index";
 import ProjectCard from "@/app/components/Cards/project_card";
 import Image from "next/image";
+import { JSX, ReactElement } from "react";
 
-// List of all projects
-const projects = [
+type Project = {
+  key: string;
+  title: string;
+  description: string;
+  image: string;
+  link: string;
+  bgColor: string;
+  icon: string | ReactElement;
+};
+
+const projects: Project[] = [
   {
     key: "vue-js-sorting-algo-app",
     title: "Vue JS Sorting Algorithm Visualiser",
@@ -68,12 +77,10 @@ const projects = [
   },
 ];
 
-const Page = () => {
+const Page = (): JSX.Element => {
   return (
     <div className="flex flex-col mt-[-80px]">
-      {/* Video Background Section */}
       <div className="min-h-[50vh] flex items-center relative w-full">
-        {/* Background Video Container */}
         <div className="video-container relative w-full h-full min-h-[50vh] flex justify-start items-center pointer-events-none">
           <div className="absolute inset-0 w-full h-full">
             <Image
@@ -85,14 +92,9 @@ const Page = () => {
               className="z-[-1]"
             />
           </div>
-
-          {/* Dark Overlay */}
           <div className="absolute inset-0 bg-black opacity-80 z-10 pointer-events-none" />
-
-          {/* Content */}
           <div className="relative z-20 w-full h-full flex items-center justify-center px-0 sm:px-12">
             <div className="text-white z-30 w-full lg:max-w-[1000px] ml-8 md:ml-12">
-              {/* Title Section */}
               <h1 className="text-5xl sm:text-7xl lg:text-8xl font-bold">
                 Timothy White
               </h1>
@@ -104,17 +106,12 @@ const Page = () => {
         </div>
       </div>
 
-      {/* Content Section */}
-      {/* Portfolio / Projects Section */}
       <MaxWidthWrapper bgColor="bg-gray-100">
         <div className="container text-black px-0">
           <h1 className="text-4xl sm:text-5xl font-bold mb-6">Projects</h1>
           <p className="text-lg sm:text-xl mb-4 leading-relaxed">
             Here are some of the key projects I&apos;ve worked on recently.
           </p>
-          {/* List projects with links to GitHub, live demos, etc. */}
-
-          {/* Project Cards */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {projects.map((project, index) => (
               <div

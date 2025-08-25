@@ -13,9 +13,244 @@ import { IoLogoElectron } from "react-icons/io5";
 import { generateSignedUrl } from "@/utils/generate_signed_url";
 import { RiJavascriptLine } from "react-icons/ri";
 import { RiTailwindCssFill } from "react-icons/ri";
+import { ReactElement, ReactNode } from "react";
+import { EducationItem, ExperienceItem, UXFavorite } from "./types/home_page";
 
-export default function Home() {
-  const signedVideoUrl = generateSignedUrl();
+const Home: React.FC = (): ReactElement => {
+  const signedVideoUrl: string | null = generateSignedUrl();
+
+  // Experience data
+  const experiences: ExperienceItem[] = [
+    {
+      id: "learningcog",
+      title: "Mid-Level Software Developer",
+      company: "LearningCog Ltd",
+      dateRange: "July 2025 - Present",
+      type: "Hybrid - Full Time",
+      description: (
+        <ul className="text-lg sm:text-xl mb-4 leading-relaxed list-disc pl-5">
+          <li>
+            Building full-stack solutions: one project using Django, and another
+            using Python FastAPI, React, Flutter, and PostgreSQL.
+          </li>
+          <li>
+            Working in a small, agile team with technical freedom over design,
+            architecture, and technology choices.
+          </li>
+          <li>
+            Responsible for project architecture, design, and implementation.
+          </li>
+          <li>Agile project management, including sprint planning.</li>
+        </ul>
+      ),
+    },
+    {
+      id: "sycurio",
+      title: "Front-End Developer",
+      company: "Sycurio Ltd",
+      dateRange: "January 2025 - July 2025",
+      type: "Hybrid - Full Time",
+      description: (
+        <ul className="text-lg sm:text-xl mb-4 leading-relaxed list-disc pl-5">
+          <li>
+            Building and maintaining secure frontend solutions for eCommerce
+            based products.
+          </li>
+          <li>Developing e2e & component unit tests for existing solutions.</li>
+          <li>
+            Improving app performance & bundle sizes (opted for vanilla
+            solutions).
+          </li>
+          <li>Working in a small, agile team.</li>
+          <li>
+            Delivered my final-year University project to Sycurio - a full-stack
+            solution (React.js, Node.js, and PostgresSQL) hosted on their
+            servers (included project management, gathering requirements through
+            questionnaires, and coding the solution out of office hours).
+          </li>
+        </ul>
+      ),
+    },
+    {
+      id: "continental",
+      title: "Software Test Engineer",
+      company: "Continental Engineering Services Ltd",
+      dateRange: "August 2021 - November 2024",
+      type: "Apprenticeship - Full Time",
+      description: (
+        <>
+          <p className="text-lg sm:text-xl mb-4 leading-relaxed">
+            Although my title is <strong>Software Test Engineer</strong>, my
+            experience has been focused on building full-stack web applications,
+            whether it&apos;s creating responsive websites or developing desktop
+            applications using <strong>Electron.js</strong>. I&apos;ve had
+            extensive experience delivering projects, in an{" "}
+            <strong>agile</strong> environment, that combine both frontend and
+            backend solutions.
+          </p>
+          <p className="text-lg sm:text-xl mb-4 leading-relaxed">
+            At Continental Engineering Services, I have been deeply involved in
+            developing full-stack <strong>3D</strong> automotive simulations
+            using modern technologies like <strong>React.js</strong>,{" "}
+            <strong>Node.js</strong>, <strong>Three.js</strong>,{" "}
+            <strong>Electron.js</strong>, and <strong>Python</strong>. These
+            simulations help automotive engineers test and optimise vehicle
+            components in a virtual environment, reducing physical testing and
+            accelerating the design process.
+          </p>
+          <p className="text-lg sm:text-xl mb-4 leading-relaxed">
+            Additionally, I&apos;ve worked on developing{" "}
+            <strong>drone and camera calibration systems</strong> that ensure
+            high-precision data collection for automotive calibration projects.
+            These systems are used in the calibration of autonomous vehicle
+            sensors, ensuring that cameras and drones accurately capture
+            environmental data and vehicle movement.
+          </p>
+        </>
+      ),
+    },
+  ];
+
+  // Education data
+  const educationItems: EducationItem[] = [
+    {
+      id: "university",
+      title: "University",
+      institution: "University of Chichester",
+      dateRange: "September 2021 - Expected Graduation: July 2025",
+      description: (
+        <>
+          <p className="text-lg sm:text-xl mb-4">
+            Currently, I am pursuing a 2:1 in{" "}
+            <strong>
+              BSc (Hons) Digital and Technology Solutions (Software Engineering)
+            </strong>
+            . I am in my final year of study, attending university 1 day a week
+            while working on personal and professional development projects.
+          </p>
+          <p className="text-lg sm:text-xl font-semibold">Relevant Modules:</p>
+        </>
+      ),
+      grades: [
+        "Developing a Real System For a Customer",
+        "Project Management",
+        "Web User Experience",
+        "Python",
+        "Java",
+        "PHP and an SQL Database using PHPMyAdmin",
+      ],
+    },
+    {
+      id: "college",
+      title: "College - Sixth Form",
+      institution: "St Paul's Catholic College",
+      dateRange: "September 2019 - July 2021",
+      description: (
+        <p className="text-lg sm:text-xl mb-4">
+          I studied an A Level in Computer Science & a double BTEC in Business.
+        </p>
+      ),
+      grades: ["Computer Science: A", "Double BTEC Business: D* D*"],
+    },
+    {
+      id: "gcses",
+      title: "GCSEs",
+      institution: "Warden Park Academy",
+      dateRange: "September 2014 - July 2019",
+      description: null,
+      grades: [
+        "Product Design: 7",
+        "Computer Science: 6",
+        "Maths: 6",
+        "History: 6",
+        "English Language: 6",
+        "English Literature: 5",
+        "Chemistry: 5",
+        "Physics: 5",
+        "Biology: 5",
+      ],
+    },
+  ];
+
+  // UX Favorites data
+  const uxFavorites: UXFavorite[] = [
+    {
+      id: "font",
+      category: "Favourite Font",
+      item: "Montserrat",
+      description:
+        "is my go-to font for clean, modern web designs. Its versatility and readability make it perfect for both headings and body text.",
+      badgeClass: "badge-primary",
+    },
+    {
+      id: "tool",
+      category: "Favourite Design Tool",
+      item: "Figma",
+      description:
+        "is my favorite design tool for prototyping and collaboration. Its powerful features make it easy to create and iterate on user interfaces.",
+      badgeClass: "badge-secondary",
+    },
+    {
+      id: "random",
+      category: "Random Favourite",
+      item: "Dark Mode",
+      description:
+        "is one of my favorite UX design features. It helps reduce eye strain and makes interfaces look sleek and modern. Bit ironic, because I made this website in light mode!",
+      badgeClass: "badge-accent",
+    },
+  ];
+
+  const renderExperienceCard = (experience: ExperienceItem): ReactElement => (
+    <div
+      key={experience.id}
+      className="relative bg-white p-6 rounded-md shadow-md"
+    >
+      <span className="badge h-auto max-h-[40px] absolute left-1/2 transform -translate-x-1/2 -top-4 bg-[#22d3ee] text-black font-bold px-6 py-3 rounded-full text-large mt-1 w-[65vw] sm:w-auto">
+        {experience.dateRange}
+      </span>
+      <h3 className="text-2xl sm:text-3xl font-bold mb-2 mt-4">
+        {experience.title} - {experience.company}
+      </h3>
+      <p className="text-md sm:text-lg text-gray-700 mb-2">{experience.type}</p>
+      {experience.description}
+    </div>
+  );
+
+  const renderEducationCard = (item: EducationItem): ReactElement => (
+    <div key={item.id} className="bg-white p-6 rounded-lg shadow-md">
+      <h3 className="text-2xl sm:text-3xl font-bold mb-2">{item.title}</h3>
+      <p className="text-md sm:text-lg text-gray-700 mb-2">
+        {item.institution} | {item.dateRange}
+      </p>
+      {item.description}
+      {item.grades && (
+        <>
+          <p className="text-lg sm:text-xl font-semibold">
+            {item.id === "university" ? "Relevant Modules:" : "Grades:"}
+          </p>
+          <ul className="list-disc list-inside text-lg sm:text-xl leading-relaxed">
+            {item.grades.map((grade: string, index: number) => (
+              <li key={index}>{grade}</li>
+            ))}
+          </ul>
+        </>
+      )}
+    </div>
+  );
+
+  const renderUXFavoriteCard = (favorite: UXFavorite): ReactElement => (
+    <div key={favorite.id} className="card shadow-lg bg-gray-200">
+      <div className="card-body">
+        <h3 className="card-title">{favorite.category}</h3>
+        <p className="text-lg">
+          <span className={`badge ${favorite.badgeClass} text-lg p-3 mr-1`}>
+            {favorite.item}
+          </span>
+          {favorite.description}
+        </p>
+      </div>
+    </div>
+  );
 
   return (
     <div className="flex flex-col mt-[-80px]">
@@ -67,20 +302,19 @@ export default function Home() {
               Timothy White | Brighton, UK
             </h3>
             <p className="text-lg sm:text-xl mb-4 leading-relaxed">
-              {" "}
               Hi, I&apos;m Timothy White, a full-stack developer specialising in
               full-stack web solutions. I have developed various applications,
               including those for drone, automotive, and camera calibration
-              systems.{" "}
-            </p>{" "}
+              systems.
+            </p>
             <p className="text-lg sm:text-xl mb-4 leading-relaxed">
-              I’m also an instructor in the Army Cadets, helping young people
-              develop their skills and confidence. Outside of work, you’ll often
+              I'm also an instructor in the Army Cadets, helping young people
+              develop their skills and confidence. Outside of work, you'll often
               find me pursuing my love for bodybuilding and continuously working
               on personal development projects.
             </p>
             <p className="text-lg sm:text-xl leading-relaxed">
-              I’m always eager to take on new challenges and explore
+              I'm always eager to take on new challenges and explore
               technologies.
             </p>
           </div>
@@ -104,139 +338,14 @@ export default function Home() {
         <div className="container text-black px-0">
           <h2 className="text-4xl sm:text-5xl font-bold mb-6">Experience</h2>
           <p className="text-lg sm:text-xl mb-4 leading-relaxed">
-            Over the years, I’ve worked on a variety of exciting projects,
+            Over the years, I've worked on a variety of exciting projects,
             building full-stack solutions for advanced automotive technology and
             drone systems. Here are some highlights of my professional journey.
           </p>
 
           <div className="grid gap-7 grid-flow-row">
             <div className="space-y-6">
-              {/* LearningCog */}
-              <div className="relative bg-white p-6 rounded-md shadow-md">
-                {/* Badge for Date */}
-                <span className="badge  h-auto max-h-[40px] absolute left-1/2 transform -translate-x-1/2 -top-4 bg-[#22d3ee] text-black font-bold px-6 py-3 rounded-full text-large mt-1 w-[65vw] sm:w-auto">
-                  July 2025 - Present
-                </span>
-
-                {/* Experience Details */}
-                <h3 className="text-2xl sm:text-3xl font-bold mb-2 mt-4">
-                  Mid-Level Software Developer - LearningCog Ltd
-                </h3>
-                <p className="text-md sm:text-lg text-gray-700 mb-2">
-                  Hybrid - Full Time
-                </p>
-
-                {/* First Paragraph */}
-                <ul className="text-lg sm:text-xl mb-4 leading-relaxed list-disc pl-5">
-                  <li>
-                    Building full-stack solutions: one project using Django, and
-                    another using Python FastAPI, React, Flutter, and
-                    PostgreSQL.
-                  </li>
-                  <li>
-                    Working in a small, agile team with technical freedom over
-                    design, architecture, and technology choices.
-                  </li>
-                  <li>
-                    Responsible for project architecture, design, and
-                    implementation.
-                  </li>
-                  <li>Agile project management, including sprint planning.</li>
-                </ul>
-              </div>
-
-              {/* Sycurio Experience */}
-              <div className="relative bg-white p-6 rounded-md shadow-md">
-                {/* Badge for Date */}
-                <span className="badge  h-auto max-h-[40px] absolute left-1/2 transform -translate-x-1/2 -top-4 bg-[#22d3ee] text-black font-bold px-6 py-3 rounded-full text-large mt-1 w-[65vw] sm:w-auto">
-                  January 2025 - July 2025
-                </span>
-
-                {/* Experience Details */}
-                <h3 className="text-2xl sm:text-3xl font-bold mb-2 mt-4">
-                  Front-End Developer - Sycurio Ltd
-                </h3>
-                <p className="text-md sm:text-lg text-gray-700 mb-2">
-                  Hybrid - Full Time
-                </p>
-
-                {/* First Paragraph */}
-                <ul className="text-lg sm:text-xl mb-4 leading-relaxed list-disc pl-5">
-                  <li>
-                    Building and maintaining secure frontend solutions for
-                    eCommerce based products.
-                  </li>
-                  <li>
-                    Developing e2e & component unit tests for existing
-                    solutions.
-                  </li>
-                  <li>
-                    Improving app performance & bundle sizes (opted for vanilla
-                    solutions).
-                  </li>
-                  <li>Working in a small, agile team.</li>
-                  <li>
-                    Delivered my final-year University project to Sycurio - a
-                    full-stack solution (React.js, Node.js, and PostgresSQL)
-                    hosted on their servers (included project management,
-                    gathering requirements through questionnaires, and coding
-                    the solution out of office hours).
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <div className="space-y-6">
-              {/* Continental Engineering Services Experience */}
-              <div className="relative bg-white p-6 rounded-md shadow-md">
-                {/* Badge for Date */}
-                <span className="badge  h-auto max-h-[45px] absolute left-1/2 transform -translate-x-1/2 -top-4 bg-[#22d3ee] text-black font-bold px-6 py-3 rounded-full text-large mt-1 w-[65vw] sm:w-auto">
-                  August 2021 - November 2024
-                </span>
-
-                {/* Experience Details */}
-                <h3 className="text-2xl sm:text-3xl font-bold mb-2 mt-4">
-                  Software Test Engineer - Continental Engineering Services Ltd
-                </h3>
-                <p className="text-md sm:text-lg text-gray-700 mb-2">
-                  Apprenticeship - Full Time
-                </p>
-
-                {/* First Paragraph */}
-                <p className="text-lg sm:text-xl mb-4 leading-relaxed">
-                  Although my title is **Software Test Engineer**, my experience
-                  has been focused on building full-stack web applications,
-                  whether it&apos;s creating responsive websites or developing
-                  desktop applications using <strong>Electron.js</strong>.
-                  I&apos;ve had extensive experience delivering projects, in an{" "}
-                  <strong>agile</strong> environment, that combine both frontend
-                  and backend solutions.
-                </p>
-
-                {/* Second Paragraph */}
-                <p className="text-lg sm:text-xl mb-4 leading-relaxed">
-                  At Continental Engineering Services, I have been deeply
-                  involved in developing full-stack <strong>3D</strong>{" "}
-                  automotive simulations using modern technologies like{" "}
-                  <strong>React.js</strong>, <strong>Node.js</strong>,{" "}
-                  <strong>Three.js</strong>, <strong>Electron.js</strong>, and{" "}
-                  <strong>Python</strong>. These simulations help automotive
-                  engineers test and optimise vehicle components in a virtual
-                  environment, reducing physical testing and accelerating the
-                  design process.
-                </p>
-
-                {/* Third Paragraph */}
-                <p className="text-lg sm:text-xl mb-4 leading-relaxed">
-                  Additionally, I&apos;ve worked on developing{" "}
-                  <strong>drone and camera calibration systems</strong> that
-                  ensure high-precision data collection for automotive
-                  calibration projects. These systems are used in the
-                  calibration of autonomous vehicle sensors, ensuring that
-                  cameras and drones accurately capture environmental data and
-                  vehicle movement.
-                </p>
-              </div>
+              {experiences.map(renderExperienceCard)}
             </div>
           </div>
         </div>
@@ -271,6 +380,7 @@ export default function Home() {
               Skilled in TypeScript for building robust and maintainable web
               applications, enhancing code quality and developer experience.
             </SkillCard>
+
             <SkillCard
               title="React.js"
               experienceStartYear={2021}
@@ -280,6 +390,7 @@ export default function Home() {
               Proficient in developing dynamic, responsive web applications
               using React.js, focusing on performance and user experience.
             </SkillCard>
+
             <SkillCard
               title="Node.js"
               experienceStartYear={2021}
@@ -309,6 +420,7 @@ export default function Home() {
               Expertise in creating cross-platform desktop applications with
               Electron.js, integrating web technologies into desktop apps.
             </SkillCard>
+
             <SkillCard
               title="Tailwind CSS"
               experienceStartYear={2021}
@@ -378,11 +490,10 @@ export default function Home() {
       <MaxWidthWrapper bgColor="bg-gray-200">
         <div className="container text-black px-0">
           <h2 className="text-4xl sm:text-5xl font-bold mb-6">
-            {" "}
-            What i&apos;m learning
+            What I&apos;m Learning
           </h2>
           <p className="text-lg sm:text-xl mb-4 leading-relaxed">
-            I am currently learning and showing interest in the lnaguages below,
+            I am currently learning and showing interest in the languages below,
             focusing on building efficient and scalable applications. I am also
             exploring the capabilities of <strong>Vue.js</strong> for frontend
             development.
@@ -399,8 +510,9 @@ export default function Home() {
               Creating a chess game using JavaScript and Rust. Exploring
               Rust&apos;s websocket capabilities and database integration.{" "}
               <br />
-              <b>Click to go to project.</b>
+              <strong>Click to go to project.</strong>
             </SkillCard>
+
             <SkillCard
               title="Vue.js"
               experienceStartYear={2025}
@@ -410,8 +522,9 @@ export default function Home() {
               This is a sorting algorithm visualiser built using Vue.js. It
               allows users to visualise various sorting algorithms in action.
               <br />
-              <b>Click to go to project.</b>
-            </SkillCard>{" "}
+              <strong>Click to go to project.</strong>
+            </SkillCard>
+
             <SkillCard
               title="Golang"
               experienceStartYear={2025}
@@ -436,51 +549,7 @@ export default function Home() {
 
           {/* UX Favourites Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            {/* Favorite Font: Montserrat */}
-            <div className="card shadow-lg bg-gray-200">
-              <div className="card-body">
-                <h3 className="card-title">Favourite Font</h3>
-                <p className="text-lg">
-                  <span className="badge badge-primary text-lg p-3 mr-1">
-                    Montserrat
-                  </span>
-                  is my go-to font for clean, modern web designs. Its
-                  versatility and readability make it perfect for both headings
-                  and body text.
-                </p>
-              </div>
-            </div>
-
-            {/* Favorite Design Tool: Figma */}
-            <div className="card shadow-lg bg-gray-200">
-              <div className="card-body">
-                <h3 className="card-title">Favourite Design Tool</h3>
-                <p className="text-lg">
-                  <span className="badge badge-secondary text-lg p-3 mr-1">
-                    Figma
-                  </span>
-                  is my favorite design tool for prototyping and collaboration.
-                  Its powerful features make it easy to create and iterate on
-                  user interfaces.
-                </p>
-              </div>
-            </div>
-
-            {/* Random UX Favourite */}
-            <div className="card shadow-lg bg-gray-200">
-              <div className="card-body">
-                <h3 className="card-title">Random Favourite</h3>
-                <p className="text-lg">
-                  <span className="badge badge-accent text-lg p-3 mr-1">
-                    Dark Mode
-                  </span>
-                  is one of my favorite UX design features. It helps reduce eye
-                  strain and makes interfaces look sleek and modern
-                  <br />
-                  Bit ironic, because I made this website in light mode!
-                </p>
-              </div>
-            </div>
+            {uxFavorites.map(renderUXFavoriteCard)}
           </div>
         </div>
       </MaxWidthWrapper>
@@ -497,74 +566,7 @@ export default function Home() {
 
           {/* Education Details */}
           <div className="space-y-6">
-            {/* University Degree */}
-            <div className="bg-white p-6 rounded-lg shadow-md">
-              <h3 className="text-2xl sm:text-3xl font-bold mb-2">
-                University
-              </h3>
-              <p className="text-md sm:text-lg text-gray-700 mb-2">
-                University of Chichester | September 2021 - Expected Graduation:
-                July 2025
-              </p>
-              <p className="text-lg sm:text-xl mb-4">
-                Currently, I am pursuing a 2:1 in{" "}
-                <strong>
-                  BSc (Hons) Digital and Technology Solutions (Software
-                  Engineering)
-                </strong>
-                . I am in my final year of study, attending university 1 day a
-                week while working on personal and professional development
-                projects.
-              </p>
-              <p className="text-lg sm:text-xl font-semibold">
-                Relevant Modules:
-              </p>
-              <ul className="list-disc list-inside text-lg sm:text-xl leading-relaxed">
-                <li>Developing a Real System For a Customer</li>
-                <li>Project Management</li>
-                <li>Web User Experience</li>
-                <li>Python</li>
-                <li>Java</li>
-                <li>PHP and an SQL Database using PHPMyAdmin</li>
-              </ul>
-            </div>
-
-            <div className="bg-white p-6 rounded-lg shadow-md">
-              <h3 className="text-2xl sm:text-3xl font-bold mb-2">
-                College - Sixth Form
-              </h3>
-              <p className="text-md sm:text-lg text-gray-700 mb-2">
-                St Paul&apos;s Catholic College | September 2019 - July 2021
-              </p>
-              <p className="text-lg sm:text-xl mb-4">
-                I studied an A Level in Computer Science & a double BTEC in
-                Business.
-              </p>
-              <p className="text-lg sm:text-xl font-semibold">Grades:</p>
-              <ul className="list-disc list-inside text-lg sm:text-xl leading-relaxed">
-                <li>Computer Science: A</li>
-                <li>Double BTEC Business: D* D*</li>
-              </ul>
-            </div>
-
-            <div className="bg-white p-6 rounded-lg shadow-md">
-              <h3 className="text-2xl sm:text-3xl font-bold mb-2">GCSEs</h3>
-              <p className="text-md sm:text-lg text-gray-700 mb-2">
-                Warden Park Academy | September 2014 - July 2019
-              </p>
-              <p className="text-lg sm:text-xl font-semibold">Grades:</p>
-              <ul className="list-disc list-inside text-lg sm:text-xl leading-relaxed">
-                <li>Product Design: 7</li>
-                <li>Computer Science: 6</li>
-                <li>Maths: 6</li>
-                <li>History: 6</li>
-                <li>English Language: 6</li>
-                <li>English Literature: 5</li>
-                <li>Chemistry: 5</li>
-                <li>Physics: 5</li>
-                <li>Biology: 5</li>
-              </ul>
-            </div>
+            {educationItems.map(renderEducationCard)}
 
             {/* Certifications */}
             <div className="bg-white p-6 rounded-lg shadow-md">
@@ -599,4 +601,6 @@ export default function Home() {
       </MaxWidthWrapper>
     </div>
   );
-}
+};
+
+export default Home;

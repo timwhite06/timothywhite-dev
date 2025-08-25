@@ -1,5 +1,7 @@
-const Footer = () => {
-  const currentYear = new Date().getFullYear();
+import { JSX } from "react";
+
+const Footer = (): JSX.Element => {
+  const currentYear: number = new Date().getFullYear();
 
   return (
     <div className="flex flex-col w-full">

@@ -10,4 +10,4 @@ export default {
       "/pages/policies/terms-of-service",
     ],
   },
-};
+} as const;

@@ -1,18 +1,18 @@
+import { JSX, ReactNode, Suspense } from "react";
 import { Montserrat } from "next/font/google";
-import "./globals.css";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import Script from "next/script";
-import { Suspense } from "react";
 import Loading from "./loading";
 import Header from "@/app/components/Header";
-import Footer from "@/app/components/Footer";
+import Footer from "@/app/components/Footer/index";
+import "./globals.css";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"], // Add multiple weights
-  variable: "--font-montserrat", // CSS variable for Tailwind
-  display: "swap", // Better loading performance
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-montserrat",
+  display: "swap",
 });
 
 export const metadata = {
@@ -42,7 +42,11 @@ export const metadata = {
     "Timothy White, tim white web development, Timothy White website development, tim white website development, website design, web developer, website development services, web development agency, professional web developer",
 };
 
-export default function RootLayout({ children }) {
+type RootLayoutProps = {
+  children: ReactNode;
+};
+
+export default function RootLayout({ children }: RootLayoutProps): JSX.Element {
   return (
     <html lang="en" className={montserrat.variable}>
       <Script

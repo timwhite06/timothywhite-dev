@@ -1,10 +1,20 @@
-'use client';
-import Image from 'next/image';
-import Link from 'next/link';
-import { useState } from 'react';
+"use client";
+import Image from "next/image";
+import Link from "next/link";
+import { JSX, useState } from "react";
 
-const SideMenu = ({ tabs, pathname }) => {
-  const [isOpen, setIsOpen] = useState(false);
+type Tab = {
+  name: string;
+  route: string;
+};
+
+type SideMenuProps = {
+  tabs: Tab[];
+  pathname: string | null;
+};
+
+const SideMenu = ({ tabs, pathname }: SideMenuProps): JSX.Element => {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const handleClick = () => {
     setIsOpen(!isOpen);
@@ -18,7 +28,7 @@ const SideMenu = ({ tabs, pathname }) => {
 
       <div
         className={`fixed top-0 left-0 w-full h-full bg-primary transition-transform duration-300 ease-out ${
-          isOpen ? 'translate-x-0' : '-translate-x-full'
+          isOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
         <div className="w-full flex p-4 items-center justify-between">
@@ -38,12 +48,12 @@ const SideMenu = ({ tabs, pathname }) => {
         </div>
 
         <nav className="flex flex-col items-center h-full mt-10">
-          {tabs.map((t, i) => (
+          {tabs.map((t: Tab, i: number) => (
             <Link
               href={t.route}
               key={`${t.name}_${i}`}
               className={`text-2xl mb-4 ${
-                pathname === t.route ? 'text-black' : 'text-white'
+                pathname === t.route ? "text-black" : "text-white"
               } hover:text-black`}
               onClick={handleClick}
             >
@@ -51,11 +61,7 @@ const SideMenu = ({ tabs, pathname }) => {
             </Link>
           ))}
 
-          {/* GitHub Icon at the bottom */}
-          <div
-            className=" 
-          mt-auto mb-[150px]"
-          >
+          <div className="mt-auto mb-[150px]">
             <Link
               href="https://github.com/timwhite06"
               className="hover:text-gray-400"
