@@ -1,55 +1,56 @@
-import { Montserrat } from 'next/font/google';
-import './globals.css';
-import { Analytics } from '@vercel/analytics/react';
-import { SpeedInsights } from '@vercel/speed-insights/next';
-import Script from 'next/script';
-import { Suspense } from 'react';
-import Loading from './loading';
-import Header from '@/app/components/Header';
-import Footer from '@/app/components/Footer';
+import { Montserrat } from "next/font/google";
+import "./globals.css";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import Script from "next/script";
+import { Suspense } from "react";
+import Loading from "./loading";
+import Header from "@/app/components/Header";
+import Footer from "@/app/components/Footer";
 
-const font = Montserrat({
-  subsets: ['latin'],
-  weight: '400'
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"], // Add multiple weights
+  variable: "--font-montserrat", // CSS variable for Tailwind
+  display: "swap", // Better loading performance
 });
 
 export const metadata = {
-  metadataBase: new URL('https://timothywhitedevelopment.com'),
+  metadataBase: new URL("https://timothywhitedevelopment.com"),
   title: {
-    default: 'Timothy White',
-    template: '%s | Timothy White'
+    default: "Timothy White",
+    template: "%s | Timothy White",
   },
-  description: 'A Personal Portfolio.',
+  description: "A Personal Portfolio.",
   openGraph: {
-    type: 'website',
-    url: 'https://timothywhitedevelopment.com',
-    title: 'Timothy White',
-    description: 'A Personal Portfolio.',
-    images: '/images/logo.png',
-    site_name: 'Timothy White',
+    type: "website",
+    url: "https://timothywhitedevelopment.com",
+    title: "Timothy White",
+    description: "A Personal Portfolio.",
+    images: "/images/logo.png",
+    site_name: "Timothy White",
     keywords:
-      'Timothy White, timothy white development, tim white web development, Timothy White website development, tim white website development, website design, timothy white portfolio, timothy white web developer, timothy white web designer'
+      "Timothy White, timothy white development, tim white web development, Timothy White website development, tim white website development, website design, timothy white portfolio, timothy white web developer, timothy white web designer",
   },
   twitter: {
-    card: 'summary_large_image',
-    title: 'Timothy White',
-    description: 'A Personal Portfolio.',
-    images: '/images/logo.png'
+    card: "summary_large_image",
+    title: "Timothy White",
+    description: "A Personal Portfolio.",
+    images: "/images/logo.png",
   },
   keywords:
-    'Timothy White, tim white web development, Timothy White website development, tim white website development, website design, web developer, website development services, web development agency, professional web developer'
+    "Timothy White, tim white web development, Timothy White website development, tim white website development, website design, web developer, website development services, web development agency, professional web developer",
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" className={montserrat.variable}>
       <Script
         src="https://kit.fontawesome.com/289aa77e1d.js"
         strategy="lazyOnload"
         crossOrigin="anonymous"
       />
-
-      <body className={font.className}>
+      <body className={`${montserrat.className} antialiased`}>
         <Analytics />
         <SpeedInsights />
         <Suspense fallback={<Loading />}>

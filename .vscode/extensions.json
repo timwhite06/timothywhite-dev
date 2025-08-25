@@ -1,6 +1,7 @@
 {
-    "recommendations": [
-      "mrmlnc.vscode-json5",
-      "esbenp.prettier-vscode",
-      "dbaeumer.vscode-eslint"    ]
+  "recommendations": [
+    "mrmlnc.vscode-json5",
+    "esbenp.prettier-vscode",
+    "dbaeumer.vscode-eslint"
+  ]
 }

@@ -1,6 +1,6 @@
-import PropTypes from 'prop-types';
-import Image from 'next/image';
-import CTAButton from '@/app/components/Buttons/call_to_action';
+import PropTypes from "prop-types";
+import Image from "next/image";
+import CTAButton from "@/app/components/Buttons/call_to_action";
 
 const ProjectCard = ({ title, description, image, link, bgColor, icon }) => {
   return (
@@ -13,7 +13,7 @@ const ProjectCard = ({ title, description, image, link, bgColor, icon }) => {
           src={image}
           alt={title}
           fill // Use fill without layout
-          style={{ objectFit: 'cover' }} // Update objectFit to be inline style
+          style={{ objectFit: "cover" }} // Update objectFit to be inline style
           sizes="100%"
           className="rounded-t-lg"
         />
@@ -22,7 +22,7 @@ const ProjectCard = ({ title, description, image, link, bgColor, icon }) => {
       {/* Card Body */}
       <div className="card-body p-4">
         {/* Title */}
-        <h2 className="card-title text-xl font-bold">{title}</h2>
+        <h4 className="card-title text-xl font-bold">{title}</h4>
         {/* Description */}
         <p className="text-gray-600 text-lg">{description}</p>
 
@@ -35,7 +35,7 @@ const ProjectCard = ({ title, description, image, link, bgColor, icon }) => {
 
       {/* Icon in Bottom-Left Corner */}
       <div className="absolute bottom-4 left-4">
-        {typeof icon === 'object' ? (
+        {typeof icon === "object" ? (
           <div className="h-10 w-10">{icon}</div>
         ) : (
           <i className={`${icon} text-4xl text-black`}></i>
@@ -51,11 +51,11 @@ ProjectCard.propTypes = {
   image: PropTypes.string.isRequired,
   link: PropTypes.string.isRequired,
   bgColor: PropTypes.string,
-  icon: PropTypes.oneOfType([PropTypes.string, PropTypes.element]).isRequired
+  icon: PropTypes.oneOfType([PropTypes.string, PropTypes.element]).isRequired,
 };
 
 ProjectCard.defaultProps = {
-  bgColor: 'bg-gray-100' // Default background color
+  bgColor: "bg-gray-100", // Default background color
 };
 
 export default ProjectCard;

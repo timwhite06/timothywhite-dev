@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
-import Link from 'next/link';
+import PropTypes from "prop-types";
+import Link from "next/link";
 
 // Function to calculate years of experience based on start and end years
 function getYearsOfExperience(startYear, endYear) {
@@ -16,9 +16,9 @@ const SkillCard = ({
   experienceStartYear,
   experienceEndYear,
   children,
-  link
+  link,
 }) => {
-  const isSvg = typeof icon === 'object';
+  const isSvg = typeof icon === "object";
 
   const isYearValid =
     experienceStartYear !== null && experienceStartYear !== undefined;
@@ -31,11 +31,11 @@ const SkillCard = ({
       <div className="card card-compact bg-gray-100 w-full min-h-[250px] sm:min-h-[350px] transition-transform transform hover:scale-105 hover:shadow-[0_4px_14px_rgba(34,211,238,0.4)]">
         <div className="card-body">
           <div className="flex justify-between items-center">
-            <h2 className="card-title text-2xl">{title}</h2>
+            <h4 className="card-title text-2xl">{title}</h4>
             {yearsOfExperience !== null && (
               <div
                 className="badge text-lg p-3 mt-[-5px] border-none text-black"
-                style={{ background: '#22d3ee' }}
+                style={{ background: "#22d3ee" }}
               >
                 {yearsOfExperience}+ years
               </div>
@@ -62,7 +62,7 @@ SkillCard.propTypes = {
   experienceEndYear: PropTypes.number, // Optional ending year of experience
   icon: PropTypes.oneOfType([PropTypes.string, PropTypes.element]).isRequired,
   children: PropTypes.node.isRequired,
-  link: PropTypes.string.isRequired
+  link: PropTypes.string.isRequired,
 };
 
 export default SkillCard;

@@ -35,10 +35,4 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# Ignore all video files in public/videos
-public/videos/*.mp4
-public/videos/*.avi
-public/videos/*.mov
-public/videos/*.mkv
-public/videos/*.flv
-public/videos/*.wmv
+.vercel

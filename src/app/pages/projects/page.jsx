@@ -1,71 +1,71 @@
 // MaxWidthWrapper Component
-import MaxWidthWrapper from '@/app/components/Wrappers/max_width_wrapper';
-import { FaVuejs } from 'react-icons/fa';
-import { SiNx } from 'react-icons/si';
-import { NextJsIcon } from '@/app/components/Icons';
-import ProjectCard from '@/app/components/Cards/project_card';
-import Image from 'next/image';
+import MaxWidthWrapper from "@/app/components/Wrappers/max_width_wrapper";
+import { FaVuejs } from "react-icons/fa";
+import { SiNx } from "react-icons/si";
+import { NextJsIcon } from "@/app/components/Icons";
+import ProjectCard from "@/app/components/Cards/project_card";
+import Image from "next/image";
 
 // List of all projects
 const projects = [
   {
-    key: 'vue-js-sorting-algo-app',
-    title: 'Vue JS Sorting Algorithm Visualiser',
+    key: "vue-js-sorting-algo-app",
+    title: "Vue JS Sorting Algorithm Visualiser",
     description:
-      'A sorting algorithm visualiser built using Vue.js. It allows users to visualise various sorting algorithms in action.',
-    image: '/images/sorting.png',
-    link: 'https://timwhite06-vuejs-sorting-algorithms.netlify.app/',
-    bgColor: 'bg-gray-100',
+      "A sorting algorithm visualiser built using Vue.js. It allows users to visualise various sorting algorithms in action.",
+    image: "/images/sorting.png",
+    link: "https://timwhite06-vuejs-sorting-algorithms.netlify.app/",
+    bgColor: "bg-gray-100",
     icon: (
       <div className="text-5xl">
         <FaVuejs />
       </div>
-    )
+    ),
   },
   {
-    key: 'weather-app',
-    title: 'Weather App',
+    key: "weather-app",
+    title: "Weather App",
     description:
-      'Uses Visual Crossings free weather API to display the current weather for a given location. Uses NX for monorepo, Next JS, and TypeScript.',
-    image: '/images/weatherlightning.jpg',
-    link: 'https://weather-app-2-kappa-silk.vercel.app/',
-    bgColor: 'bg-gray-100',
+      "Uses Visual Crossings free weather API to display the current weather for a given location. Uses NX for monorepo, Next JS, and TypeScript.",
+    image: "/images/weatherlightning.jpg",
+    link: "https://weather-app-2-kappa-silk.vercel.app/",
+    bgColor: "bg-gray-100",
     icon: (
       <div className="text-5xl">
         <SiNx />
       </div>
-    )
+    ),
   },
   {
-    key: 'chess-game',
-    title: 'Chess Game',
+    key: "chess-game",
+    title: "Chess Game",
     description:
       "A chess game built using JavaScript and Rust. Exploring Rust's websocket capabilities and database integration.",
-    image: '/images/chess.jpg',
-    link: 'https://github.com/timwhite06/chess-rust-and-javascript',
-    bgColor: 'bg-gray-100',
-    icon: 'fa-brands fa-rust'
+    image: "/images/chess.jpg",
+    link: "https://github.com/timwhite06/chess-rust-and-javascript",
+    bgColor: "bg-gray-100",
+    icon: "fa-brands fa-rust",
   },
   {
-    key: 'portfolio',
-    title: 'Portfolio Website',
+    key: "portfolio",
+    title: "Portfolio Website",
     description:
-      'A personal portfolio website built using Next.js and Tailwind CSS.',
-    image: '/images/setup.jpg',
-    link: 'https://github.com/timwhite06/timothy-white-development',
-    bgColor: 'bg-gray-100',
-    icon: <NextJsIcon />
+      "A personal portfolio website built using Next.js and Tailwind CSS.",
+    image: "/images/setup.jpg",
+    link: "https://github.com/timwhite06/timothy-white-development",
+    bgColor: "bg-gray-100",
+    icon: <NextJsIcon />,
   },
   {
-    key: 'downloader',
-    title: 'YouTube mp4 & mp3 Downloader',
+    key: "downloader",
+    title: "YouTube mp4 & mp3 Downloader",
     description:
-      'A command line application that allows users to download YouTube videos in mp4 and mp3 formats.',
-    image: '/images/youtube_pexel.jpg',
-    link: 'https://github.com/timwhite06/youtube-video-audio-downloader',
-    bgColor: 'bg-gray-100',
-    icon: 'fa-brands fa-python'
-  }
+      "A command line application that allows users to download YouTube videos in mp4 and mp3 formats.",
+    image: "/images/youtube_pexel.jpg",
+    link: "https://github.com/timwhite06/youtube-video-audio-downloader",
+    bgColor: "bg-gray-100",
+    icon: "fa-brands fa-python",
+  },
 ];
 
 const Page = () => {
@@ -80,7 +80,7 @@ const Page = () => {
               src="/images/setup.jpg"
               alt="Developer setup"
               fill
-              style={{ objectFit: 'cover' }}
+              style={{ objectFit: "cover" }}
               priority
               className="z-[-1]"
             />
@@ -108,7 +108,7 @@ const Page = () => {
       {/* Portfolio / Projects Section */}
       <MaxWidthWrapper bgColor="bg-gray-100">
         <div className="container text-black px-0">
-          <h2 className="text-4xl sm:text-5xl font-bold mb-6">Projects</h2>
+          <h1 className="text-4xl sm:text-5xl font-bold mb-6">Projects</h1>
           <p className="text-lg sm:text-xl mb-4 leading-relaxed">
             Here are some of the key projects I&apos;ve worked on recently.
           </p>
@@ -121,8 +121,8 @@ const Page = () => {
                 key={project.key}
                 className={`${
                   projects.length % 2 !== 0 && index === projects.length - 1
-                    ? 'md:col-span-2'
-                    : ''
+                    ? "md:col-span-2"
+                    : ""
                 }`}
               >
                 <ProjectCard

@@ -1,10 +1,14 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 
 // Array of routes that do not require authorization
-const allowedRoutes = [];
+const allowedRoutes = ['/api/email/enquire'];
 
-export function middleware(req) {
-  const { pathname } = req.nextUrl;
+interface AuthorizationOptions {
+  status: number;
+}
+
+export function middleware(req: NextRequest): NextResponse {
+  const { pathname }: { pathname: string } = req.nextUrl;
 
   // Check if the current route is in the allowedRoutes array
   if (allowedRoutes.includes(pathname)) {
@@ -12,11 +16,14 @@ export function middleware(req) {
   }
 
   // Perform authorization check for other routes
-  const apiKey = req.headers.get('Authorization')?.split('Bearer ')[1]; // Extract API key
+  const authorizationHeader: string | null = req.headers.get('Authorization');
+  const apiKey: string | undefined = authorizationHeader?.split('Bearer ')[1];
 
   // Check if API key exists and matches the environment variable
   if (!apiKey || apiKey !== process.env.API_KEY) {
-    return new NextResponse('Unauthorized', { status: 401 });
+    return new NextResponse('Unauthorized', {
+      status: 401
+    } as AuthorizationOptions);
   }
 
   // If the API key is valid, continue to the next handler

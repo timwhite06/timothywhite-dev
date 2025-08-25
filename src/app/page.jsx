@@ -1,18 +1,18 @@
-import VideoComponent from '@/app/components/Player/video_and_fallback';
-import MaxWidthWrapper from '@/app/components/Wrappers/max_width_wrapper';
-import SkillCard from '@/app/components/Cards/skill_card';
+import VideoComponent from "@/app/components/Player/video_and_fallback";
+import MaxWidthWrapper from "@/app/components/Wrappers/max_width_wrapper";
+import SkillCard from "@/app/components/Cards/skill_card";
 import {
   MongodbIcon,
   NextJsIcon,
-  ThreeJsIcon
-} from '@/app/components/Icons/index';
-import Link from 'next/link';
-import Image from 'next/image';
-import { TbBrandTypescript } from 'react-icons/tb';
-import { IoLogoElectron } from 'react-icons/io5';
-import { generateSignedUrl } from '@/utils/generate_signed_url';
-import { RiJavascriptLine } from 'react-icons/ri';
-import { RiTailwindCssFill } from 'react-icons/ri';
+  ThreeJsIcon,
+} from "@/app/components/Icons/index";
+import Link from "next/link";
+import Image from "next/image";
+import { TbBrandTypescript } from "react-icons/tb";
+import { IoLogoElectron } from "react-icons/io5";
+import { generateSignedUrl } from "@/utils/generate_signed_url";
+import { RiJavascriptLine } from "react-icons/ri";
+import { RiTailwindCssFill } from "react-icons/ri";
 
 export default function Home() {
   const signedVideoUrl = generateSignedUrl();
@@ -32,7 +32,7 @@ export default function Home() {
                 src="/setup.jpg"
                 alt="Developer setup"
                 fill
-                style={{ objectFit: 'cover' }}
+                style={{ objectFit: "cover" }}
                 priority
                 className="z-[-1]"
               />
@@ -67,12 +67,12 @@ export default function Home() {
               Timothy White | Brighton, UK
             </h3>
             <p className="text-lg sm:text-xl mb-4 leading-relaxed">
-              {' '}
+              {" "}
               Hi, I&apos;m Timothy White, a full-stack developer specialising in
               full-stack web solutions. I have developed various applications,
               including those for drone, automotive, and camera calibration
-              systems.{' '}
-            </p>{' '}
+              systems.{" "}
+            </p>{" "}
             <p className="text-lg sm:text-xl mb-4 leading-relaxed">
               I’m also an instructor in the Army Cadets, helping young people
               develop their skills and confidence. Outside of work, you’ll often
@@ -92,7 +92,7 @@ export default function Home() {
                 src="/images/tim.JPG"
                 alt="Profile picture - Timothy White"
                 fill
-                style={{ objectFit: 'cover' }}
+                style={{ objectFit: "cover" }}
                 sizes="100%"
               />
             </div>
@@ -208,7 +208,7 @@ export default function Home() {
                   has been focused on building full-stack web applications,
                   whether it&apos;s creating responsive websites or developing
                   desktop applications using <strong>Electron.js</strong>.
-                  I&apos;ve had extensive experience delivering projects, in an{' '}
+                  I&apos;ve had extensive experience delivering projects, in an{" "}
                   <strong>agile</strong> environment, that combine both frontend
                   and backend solutions.
                 </p>
@@ -216,10 +216,10 @@ export default function Home() {
                 {/* Second Paragraph */}
                 <p className="text-lg sm:text-xl mb-4 leading-relaxed">
                   At Continental Engineering Services, I have been deeply
-                  involved in developing full-stack <strong>3D</strong>{' '}
-                  automotive simulations using modern technologies like{' '}
-                  <strong>React.js</strong>, <strong>Node.js</strong>,{' '}
-                  <strong>Three.js</strong>, <strong>Electron.js</strong>, and{' '}
+                  involved in developing full-stack <strong>3D</strong>{" "}
+                  automotive simulations using modern technologies like{" "}
+                  <strong>React.js</strong>, <strong>Node.js</strong>,{" "}
+                  <strong>Three.js</strong>, <strong>Electron.js</strong>, and{" "}
                   <strong>Python</strong>. These simulations help automotive
                   engineers test and optimise vehicle components in a virtual
                   environment, reducing physical testing and accelerating the
@@ -228,7 +228,7 @@ export default function Home() {
 
                 {/* Third Paragraph */}
                 <p className="text-lg sm:text-xl mb-4 leading-relaxed">
-                  Additionally, I&apos;ve worked on developing{' '}
+                  Additionally, I&apos;ve worked on developing{" "}
                   <strong>drone and camera calibration systems</strong> that
                   ensure high-precision data collection for automotive
                   calibration projects. These systems are used in the
@@ -378,7 +378,7 @@ export default function Home() {
       <MaxWidthWrapper bgColor="bg-gray-200">
         <div className="container text-black px-0">
           <h2 className="text-4xl sm:text-5xl font-bold mb-6">
-            {' '}
+            {" "}
             What i&apos;m learning
           </h2>
           <p className="text-lg sm:text-xl mb-4 leading-relaxed">
@@ -397,7 +397,7 @@ export default function Home() {
               link="https://github.com/timwhite06/chess-rust-and-javascript"
             >
               Creating a chess game using JavaScript and Rust. Exploring
-              Rust&apos;s websocket capabilities and database integration.{' '}
+              Rust&apos;s websocket capabilities and database integration.{" "}
               <br />
               <b>Click to go to project.</b>
             </SkillCard>
@@ -411,7 +411,7 @@ export default function Home() {
               allows users to visualise various sorting algorithms in action.
               <br />
               <b>Click to go to project.</b>
-            </SkillCard>{' '}
+            </SkillCard>{" "}
             <SkillCard
               title="Golang"
               experienceStartYear={2025}
@@ -439,7 +439,7 @@ export default function Home() {
             {/* Favorite Font: Montserrat */}
             <div className="card shadow-lg bg-gray-200">
               <div className="card-body">
-                <h2 className="card-title">Favourite Font</h2>
+                <h3 className="card-title">Favourite Font</h3>
                 <p className="text-lg">
                   <span className="badge badge-primary text-lg p-3 mr-1">
                     Montserrat
@@ -454,7 +454,7 @@ export default function Home() {
             {/* Favorite Design Tool: Figma */}
             <div className="card shadow-lg bg-gray-200">
               <div className="card-body">
-                <h2 className="card-title">Favourite Design Tool</h2>
+                <h3 className="card-title">Favourite Design Tool</h3>
                 <p className="text-lg">
                   <span className="badge badge-secondary text-lg p-3 mr-1">
                     Figma
@@ -469,7 +469,7 @@ export default function Home() {
             {/* Random UX Favourite */}
             <div className="card shadow-lg bg-gray-200">
               <div className="card-body">
-                <h2 className="card-title">Random Favourite</h2>
+                <h3 className="card-title">Random Favourite</h3>
                 <p className="text-lg">
                   <span className="badge badge-accent text-lg p-3 mr-1">
                     Dark Mode
@@ -507,7 +507,7 @@ export default function Home() {
                 July 2025
               </p>
               <p className="text-lg sm:text-xl mb-4">
-                Currently, I am pursuing a 2:1 in{' '}
+                Currently, I am pursuing a 2:1 in{" "}
                 <strong>
                   BSc (Hons) Digital and Technology Solutions (Software
                   Engineering)
