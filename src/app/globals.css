@@ -1,231 +1,170 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@plugin "daisyui";
 
-html {
-  scroll-behavior: smooth;
+@theme {
+  --color-primary: #22d3ee;
+  --color-selection-bg: #22dee3;
+  --color-selection-text: #000000;
+  --color-bg-dark: #141414;
+  --color-cyan-400: #22dee3;
+
+  /* Font family configuration */
+  --font-family-sans: var(--font-montserrat), ui-sans-serif, system-ui,
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+    "Noto Color Emoji";
+
+  /* Animation configuration */
+  --animate-infinite-scroll: infinite-scroll 20s linear infinite;
 }
 
-.loader {
-  --tw-bg-opacity: 1;
-  /* background-color: rgb(34 211 238 / var(--tw-bg-opacity)); */
-  border: 12px solid #f3f3f3;
-  border-radius: 50%;
-  border-top: 12px solid rgb(34 211 238 / var(--tw-bg-opacity));
-  width: 120px;
-  height: 120px;
-  -webkit-animation: spin 2s linear infinite; /* Safari */
-  animation: spin 2s linear infinite;
-}
-
-@-webkit-keyframes spin {
-  0% {
-    -webkit-transform: rotate(0deg);
-  }
-  100% {
-    -webkit-transform: rotate(360deg);
-  }
-}
-
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
+/* Global styles */
 :root {
   width: 100%;
   height: 100vh;
   color: white;
   background-color: #ffffff;
-  font-family: sans-serif;
+  font-family: var(--font-family-sans);
   overflow-x: hidden;
   margin: 0;
   padding: 0;
 }
 
-::selection {
-  background: #22dee3;
-  color: #000000;
+html {
+  scroll-behavior: smooth;
 }
 
+::selection {
+  background: var(--color-selection-bg);
+  color: var(--color-selection-text);
+}
+
+/* Custom components using @property for better performance */
+@property --loader-border-color {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #f3f3f3;
+}
+
+@property --loader-top-color {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #22dee3;
+}
+
+.loader {
+  border: 12px solid var(--loader-border-color);
+  border-radius: 50%;
+  border-top: 12px solid var(--loader-top-color);
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Custom utilities */
 .text-outline {
-  text-shadow: 
-    -1px -1px 0 #000,  
-     1px -1px 0 #000,
-    -1px  1px 0 #000,
-     1px  1px 0 #000;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+    1px 1px 0 #000;
 }
 
 @keyframes infinite-scroll {
-  0% {
-    transform: translateY(0);
+  from {
+    transform: translateX(0);
   }
-  100% {
-    transform: translateY(-50%);
+  to {
+    transform: translateX(-100%);
   }
 }
 
 .animate-infinite-scroll {
   display: flex;
   flex-direction: column;
-  height: 200%; /* Ensures two copies fit within the view */
-  animation: infinite-scroll 20s linear infinite; /* Adjust duration as needed */
+  height: 200%;
+  animation: infinite-scroll 20s linear infinite;
 }
 
-/* Hide scrollbar on mobile */
+/* Modern scrollbar hiding */
+.scrollbar-hide {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
-.scrollbar-hide {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
-}
 
-/* Responsive text adjustments */
-@media (max-width: 768px) {
-  .text-base {
-    font-size: 1rem;
-  }
-  .text-lg {
-    font-size: 1.125rem;
-  }
-  .text-3xl {
-    font-size: 1.875rem;
-  }
-}
-
+/* Utility classes */
 .invert-colors {
   filter: invert(1);
 }
 
 .indent {
-  padding-left: 1.5rem;
+  padding-left: theme(spacing.6);
 }
 
-/* Define the transition for the opacity and other properties */
+/* Enhanced transitions */
 .transition-class {
   transition: opacity 0.4s ease-in-out, background-color 0.4s ease-in-out;
   opacity: 0;
 }
 
-/* Define the styles when the element is scrolled */
 .bg-scrolled {
-  background-color: #141414;
+  background-color: var(--color-bg-dark);
   opacity: 1;
   position: fixed;
 }
 
-/* Define the styles when the pathname is '/' */
 .bg-home {
   background-color: transparent;
   opacity: 1;
   position: fixed;
 }
 
-/* ! Text Sizes */
-/* base typography */
-html {
-  font-family: 'Montserrat', sans-serif;
-}
-
+/* Responsive typography using fluid sizing */
 h1 {
-  font-size: 3rem; /* 48px */
+  font-size: clamp(1.75rem, 4vw, 3rem);
   line-height: 1.2;
 }
 
 h2 {
-  font-size: 2.5rem; /* 40px */
+  font-size: clamp(1.5rem, 3.5vw, 2.5rem);
   line-height: 1.3;
 }
 
 h3 {
-  font-size: 2rem; /* 32px */
+  font-size: clamp(1.25rem, 3vw, 2rem);
   line-height: 1.4;
 }
 
 p {
-  font-size: 1.125rem; /* 18px */
+  font-size: clamp(0.875rem, 2vw, 1.125rem);
   line-height: 1.6;
 }
 
 small {
-  font-size: 0.875rem; /* 14px */
+  font-size: clamp(0.8125rem, 1.5vw, 0.875rem);
   line-height: 1.5;
 }
 
-/* Media queries for responsiveness */
-@media (max-width: 1024px) {
-  /* Tablet screens */
-  h1 {
-    font-size: 2.5rem; /* 40px */
+/* Container queries for enhanced responsive design */
+@container (width < 768px) {
+  .text-base {
+    font-size: 1rem;
   }
 
-  h2 {
-    font-size: 2rem; /* 32px */
+  .text-lg {
+    font-size: 1.125rem;
   }
 
-  h3 {
-    font-size: 1.75rem; /* 28px */
-  }
-
-  p {
-    font-size: 1rem; /* 16px */
-  }
-
-  small {
-    font-size: 0.875rem; /* 14px */
+  .text-3xl {
+    font-size: 1.875rem;
   }
 }
-
-@media (max-width: 768px) {
-  /* Mobile screens */
-  h1 {
-    font-size: 2rem; /* 32px */
-  }
-
-  h2 {
-    font-size: 1.75rem; /* 28px */
-  }
-
-  h3 {
-    font-size: 1.5rem; /* 24px */
-  }
-
-  p {
-    font-size: 0.9375rem; /* 15px */
-  }
-
-  small {
-    font-size: 0.8125rem; /* 13px */
-  }
-}
-
-@media (max-width: 480px) {
-  /* Small mobile screens */
-  h1 {
-    font-size: 1.75rem; /* 28px */
-  }
-
-  h2 {
-    font-size: 1.5rem; /* 24px */
-  }
-
-  h3 {
-    font-size: 1.25rem; /* 20px */
-  }
-
-  p {
-    font-size: 0.875rem; /* 14px */
-  }
-
-  small {
-    font-size: 0.8125rem; /* 13px */
-  }
-}
-
-/* ! End of text sixes */
-
