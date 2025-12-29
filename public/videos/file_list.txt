@@ -1,2 +1,0 @@
-file 'forest.mp4'
-file 'reversed_forest.mp4'
