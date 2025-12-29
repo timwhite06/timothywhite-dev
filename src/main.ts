@@ -6,6 +6,11 @@ import "./style.css";
 import homeHtml from "./views/home.html?raw";
 import projectsHtml from "./views/projects.html?raw";
 
+// Web components
+import "./components/experience-card";
+import "./components/skill-card";
+import "./components/education-card";
+
 const router = new Router("app");
 
 router
@@ -22,5 +27,5 @@ router
 // Append the year to the footer
 const yearElement = document.getElementById("footer-year");
 if (yearElement) {
-	yearElement.textContent = String(new Date().getFullYear());
+	yearElement.textContent = String(`${new Date().getFullYear()} `);
 }

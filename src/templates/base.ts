@@ -7,7 +7,7 @@ export const createPage = (
 ) => {
 	return `
     ${getHeader()}
-    <main class="min-h-screen bg-[var(--color-bg)] text-[var(--color-text)] border-8 border-[var(--color-border)]">
+    <main class="min-h-screen bg-(--color-bg) text-(--color-text)">
       ${content}
     </main>
     ${getFooter()}
