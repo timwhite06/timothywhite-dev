@@ -11,9 +11,9 @@ My portfolio is a relatively simple website that doesn't require the complexity 
 ## Performance Improvements
 
 ### Build Times
-- **Before (Next.js):** 51 seconds
-- **After (Vite + Vanilla JS):** 4 seconds
-- **Result:** 92% faster builds
+- **Before (Next.js):** 65 seconds
+- **After (Vite + Vanilla JS):** 8 seconds
+- **Result:** 88% faster builds
 
 ### Bundle Size
 - **Before (Next.js):** ~110 kB per page + 102 kB shared chunks
