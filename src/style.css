@@ -1,0 +1,31 @@
+@import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap");
+
+:root {
+	/* Base colours */
+	--color-bg: #ffffff;
+	--color-text: #0f172a; /* slate-900 */
+	--color-border: #1e3a8a; /* blue-800 */
+
+	/* Brand blues */
+	--color-primary: #2563eb; /* blue-600 */
+	--color-primary-hover: #1d4ed8; /* blue-700 */
+	--color-surface: #f8fafc; /* slate-50 */
+
+	/* Header / footer */
+	--color-header-bg: #0f172a; /* slate-900 */
+	--color-header-text: #ffffff;
+
+	--font-sans:
+		"Montserrat", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+		sans-serif;
+}
+
+body {
+	background-color: var(--color-bg);
+	font-family: var(--font-sans);
+	color: var(--color-text);
+	margin: 0;
+	width: 100%;
+	min-height: 100vh;
+}

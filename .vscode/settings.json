@@ -1,14 +1,30 @@
 {
-  "editor.formatOnSave": true,
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit",
-    "source.removeUnusedImports": "never"
+  // Enable Biome for this workspace
+  "biome.enabled": true,
+
+  // Set Biome as the default formatter for supported languages
+  "[javascript]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "biomejs.biome"
   },
   "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "biomejs.biome"
   },
   "[jsonc]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+
+  // Automatically format files on save
+  "editor.formatOnSave": true,
+
+  // Optional: run Biome’s linter as you type
+  "biome.lintOnSave": true,
+
+  // Optional: prefer Biome formatting over Prettier or ESLint if installed
+  "editor.defaultFormatter": "biomejs.biome"
 }
