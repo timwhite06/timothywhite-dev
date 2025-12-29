@@ -1,10 +1,7 @@
 import headerHtml from "./header.html?raw";
 import footerHtml from "./footer.html?raw";
 
-export const createPage = (
-	content: string,
-	title: string = "Timothy White - Developer",
-) => {
+export const createPage = (content: string) => {
 	return `
     ${getHeader()}
     <main class="min-h-screen bg-(--color-bg) text-(--color-text)">
