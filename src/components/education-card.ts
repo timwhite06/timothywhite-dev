@@ -19,7 +19,7 @@ export class EducationCard extends HTMLElement {
 				<!-- Header -->
 				<div class="flex items-start flex-col sm:flex-row sm:justify-between gap-4">
 					<div class="order-2 sm:order-1">
-						<p class="text-xs font-semibold uppercase tracking-wide text-slate-500">
+						<p class="text-md font-semibold uppercase tracking-wide text-slate-500">
 							${type}
 						</p>
 						<h3 class="text-lg font-semibold text-slate-900">
@@ -31,14 +31,14 @@ export class EducationCard extends HTMLElement {
 						class="whitespace-nowrap rounded-full
 						       bg-cyan-50 text-cyan-900
 						       border border-cyan-200
-						       px-4 py-2 text-xs font-semibold order-1 sm:order-2"
+						       px-4 py-2 text-md font-semibold order-1 sm:order-2"
 					>
 						${dates}
 					</span>
 				</div>
 
 				<!-- Summary -->
-				<p class="text-sm text-slate-700 max-w-3xl">
+				<p class="text-md text-black/80 max-w-3xl">
 					${summary}
 				</p>
 
@@ -46,7 +46,7 @@ export class EducationCard extends HTMLElement {
 				${
 					items.length
 						? `
-					<ul class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm text-slate-700">
+					<ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 gap-x-12 text-md text-black/80">
 						${items.map((item) => `<li>• ${item}</li>`).join("")}
 					</ul>
 				`
