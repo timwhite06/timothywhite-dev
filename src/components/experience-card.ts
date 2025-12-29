@@ -37,7 +37,7 @@ export class ExperienceCard extends HTMLElement {
 						<h3 class="text-xl font-semibold text-black">
 							${role}
 						</h3>
-						<p class="text-sm text-black">
+						<p class="text-md text-black">
 							${companyMarkup}
 						</p>
 					</div>
@@ -46,7 +46,7 @@ export class ExperienceCard extends HTMLElement {
 						class="whitespace-nowrap rounded-full
 						       bg-cyan-50 text-cyan-900
 						       border border-cyan-200
-						       px-4 py-2 text-xs font-semibold order-1 sm:order-2"
+						       px-4 py-2 text-sm font-semibold order-1 sm:order-2"
 					>
 						${start} – ${end}
 					</span>
@@ -61,7 +61,7 @@ export class ExperienceCard extends HTMLElement {
 								class="rounded-full
 								       bg-cyan-50 text-cyan-900
 								       border border-cyan-200
-								       px-3 py-1 text-xs font-medium"
+								       px-3 py-1 text-sm font-medium"
 							>
 								${lang}
 							</span>
@@ -71,7 +71,7 @@ export class ExperienceCard extends HTMLElement {
 				</div>
 
 				<!-- Summary -->
-				<p class="mt-4 max-w-2xl text-slate-700 leading-relaxed">
+				<p class="mt-4 max-w-2xl text-black/80 leading-relaxed">
 					${summary}
 				</p>
 
@@ -83,7 +83,7 @@ export class ExperienceCard extends HTMLElement {
 						       bg-cyan-50 hover:bg-cyan-100
 						       border border-cyan-200
 						       px-4 py-2
-						       text-sm font-medium text-cyan-900
+						       text-md font-medium text-cyan-900
 						       transition"
 					>
 						View detailed responsibilities
@@ -104,7 +104,7 @@ export class ExperienceCard extends HTMLElement {
 						</span>
 					</summary>
 
-					<ul class="mt-3 list-disc space-y-2 pl-5 text-sm text-slate-700">
+					<ul class="mt-3 list-disc space-y-2 pl-5 text-md text-black/80">
 						${details.map((d) => `<li>${d}</li>`).join("")}
 					</ul>
 				</details>

@@ -23,13 +23,13 @@ export class SkillCard extends HTMLElement {
 					${icon}
 				</div>
 
-				<h3 class="text-sm font-semibold text-slate-900 text-center">
+				<h3 class="text-md font-semibold text-slate-900 text-center">
 					${title}
 				</h3>
 
 				${
 					meta
-						? `<p class="text-xs text-slate-600 text-center">${meta}</p>`
+						? `<p class="text-md text-slate-600 text-center">${meta}</p>`
 						: ""
 				}
 			</div>

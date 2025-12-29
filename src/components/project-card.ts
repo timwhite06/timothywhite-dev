@@ -44,12 +44,12 @@ export class ProjectCard extends HTMLElement {
 						<h3 class="text-xl font-semibold text-slate-900">
 							${title}
 						</h3>
-						<p class="text-xs uppercase tracking-wide text-slate-500">
+						<p class="text-md uppercase tracking-wide text-slate-500">
 							${type}
 						</p>
 					</div>
 
-					<p class="text-sm text-slate-700">
+					<p class="text-md text-black/80">
 						${summary}
 					</p>
 
@@ -60,7 +60,7 @@ export class ProjectCard extends HTMLElement {
 							<span
 								class="rounded-full bg-cyan-50 text-cyan-900
 								       border border-cyan-200
-								       px-3 py-1 text-xs font-medium"
+								       px-3 py-1 text-md font-medium"
 							>
 								${item}
 							</span>
@@ -72,7 +72,7 @@ export class ProjectCard extends HTMLElement {
 					${
 						details.length
 							? `
-						<ul class="list-disc pl-5 space-y-1 text-sm text-slate-700">
+						<ul class="list-disc pl-5 space-y-1 text-md text-black/80">
 							${details.map((d) => `<li>${d}</li>`).join("")}
 						</ul>
 					`
@@ -89,7 +89,7 @@ export class ProjectCard extends HTMLElement {
 								rel="noopener noreferrer"
 								class="inline-flex items-center justify-center
 								       rounded-lg bg-cyan-400 px-5 py-2
-								       text-sm font-medium text-black
+								       text-md font-medium text-black
 								       hover:bg-cyan-300 transition"
 							>
 								View Project
