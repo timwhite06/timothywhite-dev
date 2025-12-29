@@ -17,7 +17,6 @@ const router = new Router("app");
 router
 	.addRoute("/", () => createPage(homeHtml))
 	.addRoute("/projects", () => createPage(projectsHtml))
-
 	.setNotFound(() => createPage("<h1>404 - Not Found</h1>"))
 	.start();
 
